@@ -24,6 +24,6 @@ class NodeModule < Resource
   end
 
   def get_module_name
-    @name[0 .. @name.index("@", 1) - 1]
+    /((@.+?\/)?.+)?@.+/.match(@name)[1]
   end
 end

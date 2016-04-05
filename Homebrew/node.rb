@@ -5,9 +5,13 @@ require "utils/inreplace"
 module Language
   module Node
     def self.version
-      version = /^v\d\.\d.\d/.match `node --version 2>&1`
+      version = /^v\d+\.\d+.\d+/.match `node --version 2>&1`
       return unless version
       Version.new(version.to_s)
+    end
+
+    def self.is_major(major) # used by pour_bottle check
+      /^v#{major}\.\d+.\d+/ === `node --version 2>&1`
     end
 
     def self.npm_executable
@@ -32,7 +36,7 @@ module Language
           FileUtils.ln_s node_modules/m.name, node_modules/p/"node_modules"/m.get_module_name
         end
         if m.get_install
-          # TODO: this does not work with strange formatted package.json (should be resolved by moving away from npm)
+          # TODO: this does not work with strange formatted package.json (should be resolved by moving away from npm usage)
           Utils::Inreplace.inreplace node_modules/m.name/"package.json", /("install"\s*:\s*)".*"/, "\\1\"#{m.get_install}\""
           native_addons << m
         end
