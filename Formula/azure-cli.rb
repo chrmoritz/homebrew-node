@@ -7,7 +7,7 @@ class AzureCli < Formula
   sha256 "443fe18a677cb22b5c6ab2f700ceebeb6087587d139693ef6e7b4af8aef9019a"
 
   depends_on "node"
-  depends_on :python => :build if MacOS.version <= :snow_leopard
+  depends_on :python => :build
 
   pour_bottle? do
     reason "The bottle requires Node v5.x"
@@ -17,6 +17,7 @@ class AzureCli < Formula
   resource "acorn", NodeModule do
     url "https://registry.npmjs.org/acorn/-/acorn-1.2.2.tgz"
     sha256 "959e1b58c0cd193c05265253267741c10981a811ee074a2ed746684cd5fc8eb3"
+    bin({"bin/acorn" => "acorn"})
   end
 
   resource "adal-node", NodeModule do
@@ -267,6 +268,7 @@ class AzureCli < Formula
   resource "base64url", NodeModule do
     url "https://registry.npmjs.org/base64url/-/base64url-1.0.6.tgz"
     sha256 "5bc7475744c7f912cc3ef5cf411d4bfd5f0aeb3f95439e070ed227fc6b08a03c"
+    bin({"bin/base64url" => "base64url"})
   end
 
   resource "bl", NodeModule do
@@ -357,6 +359,7 @@ class AzureCli < Formula
   resource "commoner", NodeModule do
     url "https://registry.npmjs.org/commoner/-/commoner-0.10.4.tgz"
     sha256 "bcddfca1044763281e58a8b1fba22c9bd6205c345ebcfbe30a61196800099485"
+    bin({"bin/commonize" => "commonize"})
   end
 
   resource "concat-map", NodeModule do
@@ -422,6 +425,7 @@ class AzureCli < Formula
   resource "defs", NodeModule do
     url "https://registry.npmjs.org/defs/-/defs-1.1.1.tgz"
     sha256 "ac159e0c629f7c33c2896243f6abc84e1b6a1ff4f20adfdf3f4f7aad05f81b65"
+    bin({"build/es5/defs" => "defs"})
   end
 
   resource "delayed-stream", NodeModule do
@@ -467,6 +471,7 @@ class AzureCli < Formula
   resource "esprima-fb", NodeModule do
     url "https://registry.npmjs.org/esprima-fb/-/esprima-fb-15001.1001.0-dev-harmony-fb.tgz"
     sha256 "742bfe8d5bd74c030e475e947982a5a26cc46994ee0b33bcc784e85af2c7839a"
+    bin({"bin/esparse.js" => "esparse", "bin/esvalidate.js" => "esvalidate"})
   end
 
   resource "event-stream", NodeModule do
@@ -502,7 +507,6 @@ class AzureCli < Formula
   resource "fibers", NodeModule do
     url "https://registry.npmjs.org/fibers/-/fibers-1.0.10.tgz"
     sha256 "28cfae7bcd4ee86b87d33ccea133d081c7f656777fc86eeea89cdc0d8d37f96c"
-    install "node build.js || nodejs build.js" # TODO: check if install command is compiling from source
   end
 
   resource "forever-agent", NodeModule do
@@ -563,6 +567,7 @@ class AzureCli < Formula
   resource "har-validator", NodeModule do
     url "https://registry.npmjs.org/har-validator/-/har-validator-2.0.6.tgz"
     sha256 "3b7af5b6d680153c83238e8d15829a8b1de34f5b249e0324d1bb7eea8793161f"
+    bin({"bin/har-validator" => "har-validator"})
   end
 
   resource "has-ansi", NodeModule do
@@ -593,6 +598,7 @@ class AzureCli < Formula
   resource "indent-string", NodeModule do
     url "https://registry.npmjs.org/indent-string/-/indent-string-1.2.2.tgz"
     sha256 "9ccd53dc359a74602ed602ec95d461a49c91ee61b3626a69c75e12e11a315229"
+    bin({"cli.js" => "indent-string"})
   end
 
   resource "inflight", NodeModule do
@@ -708,6 +714,7 @@ class AzureCli < Formula
   resource "kuduscript", NodeModule do
     url "https://registry.npmjs.org/kuduscript/-/kuduscript-1.0.6.tgz"
     sha256 "8f24faf9d2fd6b17ecad6b7774b4cc13485e608f4b8a0eeaa9bc379e88b6a9d8"
+    bin({"bin/kuduscript" => "kuduscript"})
   end
 
   resource "lazy-cache", NodeModule do
@@ -773,6 +780,7 @@ class AzureCli < Formula
   resource "mkdirp", NodeModule do
     url "https://registry.npmjs.org/mkdirp/-/mkdirp-0.5.1.tgz"
     sha256 "77b52870e8dedc68e1e7afcdadba34d3da6debe4f3aae36453ba151f1638bf24"
+    bin({"bin/cmd.js" => "mkdirp"})
   end
 
   resource "moment", NodeModule do
@@ -899,6 +907,7 @@ class AzureCli < Formula
   resource "regenerator", NodeModule do
     url "https://registry.npmjs.org/regenerator/-/regenerator-0.8.42.tgz"
     sha256 "54db7b6b26aafe22182127f532f7abf5a90a9947f286359df1519e3bb93cde3f"
+    bin({"bin/regenerator" => "regenerator"})
   end
 
   resource "repeat-string", NodeModule do
@@ -909,6 +918,7 @@ class AzureCli < Formula
   resource "repeating", NodeModule do
     url "https://registry.npmjs.org/repeating/-/repeating-1.1.3.tgz"
     sha256 "ac30907ea677a46a47fe2da39a7b1434122f0343907d667a9f0a5eec9cc02751"
+    bin({"cli.js" => "repeating"})
   end
 
   resource "request", NodeModule do
@@ -959,6 +969,7 @@ class AzureCli < Formula
   resource "sshpk", NodeModule do
     url "https://registry.npmjs.org/sshpk/-/sshpk-1.7.4.tgz"
     sha256 "b78eccd49c980142cc59470f0b0ec495091df478a4028e65389072659a746201"
+    bin({"bin/sshpk-conv" => "sshpk-conv", "bin/sshpk-sign" => "sshpk-sign", "bin/sshpk-verify" => "sshpk-verify"})
   end
 
   resource "stable", NodeModule do
@@ -979,6 +990,7 @@ class AzureCli < Formula
   resource "streamline", NodeModule do
     url "https://registry.npmjs.org/streamline/-/streamline-0.10.17.tgz"
     sha256 "d166eb56dc6cdcb52c98e2ddb3a7916697b461e559c4df764c33f985f61d4309"
+    bin({"bin/_coffee" => "_coffee", "bin/_node" => "_node"})
   end
 
   resource "streamline-runtime", NodeModule do
@@ -1084,6 +1096,7 @@ class AzureCli < Formula
   resource "window-size", NodeModule do
     url "https://registry.npmjs.org/window-size/-/window-size-0.1.4.tgz"
     sha256 "b16522d5f5f1984f55b2347d1952c4ceec89c57814b8ac9f7193cb06752a9129"
+    bin({"cli.js" => "window-size"})
   end
 
   resource "winston", NodeModule do
@@ -1461,7 +1474,10 @@ class AzureCli < Formula
 
   def install
     libexec.install Dir["*"]
-    Language::Node.node_modules_install resources, libexec/"node_modules"
+    Language::Node.node_modules_install resources, libexec/"node_modules", true
+    cd libexec/"node_modules/fibers" do
+      system "node build.js || nodejs build.js"
+    end
     bin.install_symlink libexec/"bin/azure" => "azure"
   end
 

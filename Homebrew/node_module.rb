@@ -1,18 +1,18 @@
 class NodeModule < Resource
-  attr_reader :parent, :install
+  attr_reader :parent, :bin
 
   def initialize(name = nil, &block)
     @parent = []
-    @install = nil
+    @bin = nil
     super name, &block
   end
 
-  def install(val = nil)
-    @install = val
+  def bin(val = nil)
+    @bin = val
   end
 
-  def get_install
-    @install
+  def get_bin
+    @bin
   end
 
   def parent(val = [])
@@ -24,6 +24,6 @@ class NodeModule < Resource
   end
 
   def get_module_name
-    /((@.+?\/)?.+)?@.+/.match(@name)[1]
+    /((@.+?\/)?.+?)?(@.+)?$/.match(@name)[1]
   end
 end
